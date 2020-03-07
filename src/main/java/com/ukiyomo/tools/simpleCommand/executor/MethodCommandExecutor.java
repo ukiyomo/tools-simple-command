@@ -28,7 +28,7 @@ public class MethodCommandExecutor implements CommandExecutor {
         for (Method declaredMethod : this.getClass().getDeclaredMethods()) {
             CommandMapping commandMapping = this.getAnnotation(declaredMethod, CommandMapping.class);
 
-            if(null != commandMapping) {
+            if (null != commandMapping) {
                 ParamMapping paramMapping = this.getAnnotation(declaredMethod, ParamMapping.class);
 
                 MethodSpace methodSpace = new MethodSpace();
@@ -41,7 +41,7 @@ public class MethodCommandExecutor implements CommandExecutor {
                 methodSpace.mappingValueArray = strings;
 
                 for (int i = 0; i < strings.length; i++) {
-                    if(this.isVar(strings[i])) {
+                    if (this.isVar(strings[i])) {
                         methodSpace.mappingValueVarRef.add(i);
                     }
                 }
@@ -75,15 +75,15 @@ public class MethodCommandExecutor implements CommandExecutor {
             for (MethodSpace methodSpace : collect) {
                 boolean innerKey = true;
                 for (int i = 0; i < methodSpace.mappingValueArray.length; i++) {
-                    if(methodSpace.mappingValueVarRef.contains(i)) {
+                    if (methodSpace.mappingValueVarRef.contains(i)) {
                         continue;
                     }
-                    if(!methodSpace.mappingValueArray[i].equals(paramList.get(i))) {
+                    if (!methodSpace.mappingValueArray[i].equals(paramList.get(i))) {
                         innerKey = false;
                         break;
                     }
                 }
-                if(innerKey) {
+                if (innerKey) {
                     String[] realParams = new String[methodSpace.mappingValueVarRef.size()];
                     for (int i = 0; i < methodSpace.mappingValueVarRef.size(); i++) {
                         realParams[i] = params[methodSpace.mappingValueVarRef.get(i) - 1];
@@ -93,13 +93,13 @@ public class MethodCommandExecutor implements CommandExecutor {
                     Object[] obj = new Object[parameterTypes.length];
 
                     for (int i = 0; i < parameterTypes.length; i++) {
-                        if(CommandContext.class.isAssignableFrom(parameterTypes[i])) {
+                        if (CommandContext.class.isAssignableFrom(parameterTypes[i])) {
                             obj[i] = commandContext;
                         } else {
                             ParamOption<?> byType = ParamOption.getByType(parameterTypes[i]);
-                            if(null != byType) {
+                            if (null != byType) {
                                 ParamConverter<?> converter = CommandManager.getConverter(byType);
-                                if(null != converter) {
+                                if (null != converter) {
                                     obj[i] = converter.execute(realParams[0]);
                                     realParams = Utils.deleteFirst(realParams);
                                 }
@@ -115,7 +115,7 @@ public class MethodCommandExecutor implements CommandExecutor {
                     outerKey = false;
                 }
             }
-            if(!outerKey) {
+            if (!outerKey) {
                 return;
             }
         }

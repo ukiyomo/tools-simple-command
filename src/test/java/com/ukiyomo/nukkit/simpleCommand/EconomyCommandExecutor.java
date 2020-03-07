@@ -5,7 +5,7 @@ import com.ukiyomo.tools.simpleCommand.annotation.CommandMapping;
 import com.ukiyomo.tools.simpleCommand.context.DefaultCommandContext;
 import com.ukiyomo.tools.simpleCommand.executor.MethodCommandExecutor;
 
-public class EconomyCommand extends MethodCommandExecutor {
+public class EconomyCommandExecutor extends MethodCommandExecutor {
 
     @CommandMapping("economy")
     public void economy(CommandContext ctx) {
@@ -24,6 +24,10 @@ public class EconomyCommand extends MethodCommandExecutor {
 
     @CommandMapping("economy money add help")
     public void economyMoneyAddHelp(DefaultCommandContext ctx) {
+        this.economyMoneyAddHelp2(ctx);
+    }
+
+    public void economyMoneyAddHelp2(DefaultCommandContext ctx) {
         System.out.println(ctx.getLabel());
         System.out.println("help相关代码");
     }

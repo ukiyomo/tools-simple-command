@@ -1,6 +1,7 @@
 package com.ukiyomo.tools.simpleCommand.option;
 
 import com.ukiyomo.tools.simpleCommand.CommandManager;
+import com.ukiyomo.tools.simpleCommand.converter.BooleanParamConverter;
 import com.ukiyomo.tools.simpleCommand.converter.DoubleParamConverter;
 import com.ukiyomo.tools.simpleCommand.converter.IntegerParamConverter;
 import com.ukiyomo.tools.simpleCommand.converter.StringParamConverter;
@@ -22,11 +23,13 @@ public class ParamOption<T> extends AbstractConstant<ParamOption<T>> {
     public final static ParamOption<Integer> INTEGER = valueOf("INTEGER", Integer.class);
     public final static ParamOption<String> STRING = valueOf("STRING", String.class);
     public final static ParamOption<Double> DOUBLE = valueOf("FLOAT", Double.class);
+    public final static ParamOption<Boolean> BOOLEAN = valueOf("BOOLEAN", Boolean.class);
 
     static {
         CommandManager.registerConverter(ParamOption.DOUBLE, new DoubleParamConverter());
         CommandManager.registerConverter(ParamOption.INTEGER, new IntegerParamConverter());
         CommandManager.registerConverter(ParamOption.STRING, new StringParamConverter());
+        CommandManager.registerConverter(ParamOption.BOOLEAN, new BooleanParamConverter());
     }
 
     public static <T> ParamOption<T> valueOf(String name, Class<T> clazz) {
