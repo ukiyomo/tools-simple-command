@@ -8,14 +8,6 @@
     <artifactId>tools-simpleCommand</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <dependencies>
-        <dependency>
-            <groupId>pers.graceyu.tools</groupId>
-            <artifactId>tools-constantPool</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>

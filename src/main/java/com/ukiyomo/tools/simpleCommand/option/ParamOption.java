@@ -1,12 +1,12 @@
 package com.ukiyomo.tools.simpleCommand.option;
 
 import com.ukiyomo.tools.simpleCommand.CommandManager;
+import com.ukiyomo.tools.simpleCommand.constant.AbstractConstant;
+import com.ukiyomo.tools.simpleCommand.constant.ConstantPool;
 import com.ukiyomo.tools.simpleCommand.converter.BooleanParamConverter;
 import com.ukiyomo.tools.simpleCommand.converter.DoubleParamConverter;
 import com.ukiyomo.tools.simpleCommand.converter.IntegerParamConverter;
 import com.ukiyomo.tools.simpleCommand.converter.StringParamConverter;
-import pers.graceyu.constantPool.AbstractConstant;
-import pers.graceyu.constantPool.ConstantPool;
 
 
 public class ParamOption<T> extends AbstractConstant<ParamOption<T>> {
